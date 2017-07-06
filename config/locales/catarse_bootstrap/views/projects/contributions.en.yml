@@ -1,6 +1,12 @@
 en:
   projects:
     contributions:
+      contribution_warning:
+        title: "Grasruts is not an ecommerce site."
+        subtitle: "Supporting a campaign is believing and relying on its potential to become a reality."
+        info: "The execution of the proposal and the delivery of the rewards is the sole responsibility of the campaign director."
+        link: http://suporte.catarse.me/hc/pt-br/articles/115002214043-Responsabilidades-e-Seguran%C3%A7a
+        link_label: "Saiba sobre Responsabilidades e Segurança"
       no_account_refund:
         fill_form_text: "You have %{amount} on outstanding repayments for unfunded campaign."
       no_estimate: "Not available"

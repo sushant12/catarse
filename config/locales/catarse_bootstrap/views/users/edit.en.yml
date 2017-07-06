@@ -1,6 +1,38 @@
 en:
   users:
     edit:
+      settings_tab:
+              credit_cards:
+                title: 'Credit cards'
+                subtitle: 'If any project you have supported <strong> with Credit Card </strong> is not successful, we will automatically refund <strong> you </strong> on the card used to make the support.'
+                card_label: 'Card'
+                provider_label: 'Operator'
+                remove_label: 'To Remove'
+              update_success_msg: 'Your information has been updated'
+              legal_title: 'Responsible'
+              legal_subtitle: '<strong>IMPORTANTE</strong> Nome completo/Razão social e CPF/CNPJ <strong>não poderão ser modificados</strong> após serem salvos.'
+              account_types:
+                pf: 'Pessoa Física'
+                pj: 'Pessoa Jurídica'
+                mei: 'Pessoa Jurídica (Micro Empreendedor Individual - MEI)'
+              pf_label_name: 'Full Name'
+              pj_label_name: 'Nome completo / Razão Social'
+              pf_label_document: 'PAN'
+              pj_label_document: 'CNPJ'
+              label_birth_date: 'Date Of Birth'
+              label_state_inscription: 'Inscrição Estadual'
+              address_title: 'Address'
+              address_subtitle: 'The data below will be used to send rewards and to issue an Invoice, if applicable.'
+              label_country: 'País'
+              label_address_street: 'Street'
+              label_address_number: 'Número'
+              label_address_complement: 'Complemento'
+              label_address_neighbourhood: 'Bairro'
+              label_address_city: 'City'
+              label_address_state: 'Estado'
+              label_other_option: 'Outro / other'
+              label_address_zipcode: 'CEP'
+              label_address_phone: 'Contact Number'
       email_confirmation:
         hello: "Namaste %{name}"
         hello_sub: "We are having trouble talking to you...."

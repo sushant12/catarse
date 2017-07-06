@@ -23,7 +23,7 @@ en:
       goal: 'Financing'
       goal_subtitle: 'Please fill in the section below carefully because this information can no longer be changed after the campaign is published.'
       reports: 'Support reports'
-      user_settings: 'Cadastral and banking data'
+      user_settings: 'Banking Data'
       user_settings_subtitle: 'With the data below complete, your campaign will be ready to air. After you complete the fill, click Save. Check it out. If everything is ok, just hit the Publish button and start your campaign!'
       user_about: "Talk More About You!"
       user_about_subtitle: "Supporters want to know campaign managers better. Links that help tell your story are always welcome. "
@@ -32,11 +32,40 @@ en:
     reward_fields:
       edit: "Edit reward"
       reward: Reward
+      reward_limited: 'Limited'
+      reward_available: ' (%{available} of %{maximum} available)'
+      reward_know_more_cta_html: '&nbsp;know how&nbsp;<a target="_blank" href="https://catarse.attach.io/Hk5H9HKeZ" class="alt-link">planejar suas recompensas.</a>'
+      reward_faq_intro: 'Before offering a reward, it is important to have all production and delivery processes mapped.'
+      reward_faq_sub_intro: 'Tips for completing:'
+      faq:
+              1:
+                title: 'Reward Description and Title:'
+                description: 'They help supporters understand what you are offering. Be objective and transparent! '
+              2:
+                title: 'Reward value:'
+                description: 'Indicates how much the supporter must contribute to receive the reward. Try to offer a fair and realistic value. '
+              3:
+                title: 'Delivery forecast:'
+                description: 'Indicates when the supporter will receive the chosen reward. Be careful when setting this date so as not to frustrate your supporters. When in doubt, be conservative on time.'
+#              4:
+#                title: 'Tipo de entrega:'
+#                description: 'Como será o envio da recompensa e quanto irá custar para o apoiador. Caso você adicione um valor de frete, ele será adicionado quando o apoiador selecionar a recompensa e a localidade. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/" target="_blank" class="alt-link">Saiba mais</a>.'
+              4:
+                title: 'Number of rewards:'
+                description: 'You can also limit a reward to a certain number of supports and change the order that the rewards appear in your project.'
+      minimum_value_title: 'For Rs %{minimum_value} or more'
+      paid_contributors: '%{count} supporters'
+      delivery_estimation: 'Estimated delivery: '
+      add_reward: '+ Add Reward'
+      reward_link_label: 'Link to direct support'
+      reward_link_hint: 'The above link leads to the contribution page with this reward already selected.'
       info_box: "Describe the reward value and place a real delivery date forecast for the supporters. You can also limit a reward and when the limit is reached it appears as SOLD. If you want to change the order that the rewards appear in your campaign, simply do this by dragging them up or down."
       minimum_value: "Value:"
       deliver_at: "Delivery forecast:"
       description: "Description:"
+      reward_gone: 'Out of stock'
       limit_reward: "Limit reward"
+      reward_limited_input: 'Limit Reward'
       available: "Available quantity"
       submit: "Save"
       index:
@@ -257,6 +286,7 @@ en:
       permalink_hint: 'You can edit it until the campaign goes online. Choose something simple, straightforward and that identifies your campaign well. Try not to use hyphen, underline etc.'
       tags: 'Tags'
       tags_hint: 'List up to 5 keywords related to your campaign.'
+      tags_max_error: 'You can use up to 5 tags'
       admin_tags: 'Admin Tags'
       admin_tags_hint: 'Report tags separated by commas'
       user_id: 'User ID'
