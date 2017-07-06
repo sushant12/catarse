@@ -16,7 +16,6 @@ class Reward < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_fees, allow_destroy: true
   ranks :row_order, with_same: :project_id
 
-<<<<<<< HEAD
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Amount must be greater than or equal to Rs 100'
 
