@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoryDecorator < Draper::Decorator
   decorates :category
   include Draper::LazyHelpers

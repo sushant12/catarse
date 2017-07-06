@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class Reward < ActiveRecord::Base
   include I18n::Alchemy
   include RankedModel
@@ -16,21 +18,24 @@ class Reward < ActiveRecord::Base
 
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Amount must be greater than or equal to Rs 100'
+
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
-  scope :remaining, -> { where("
-                               rewards.maximum_contributions IS NULL
-                               OR (
-                                rewards.maximum_contributions IS NOT NULL
-                                AND (
-                                      SELECT
-                                      COUNT(distinct c.id)
-                                      FROM
-                                        contributions c JOIN payments p ON p.contribution_id = c.id
-                                      WHERE
-                                        (p.state = 'paid' OR
-                                        p.waiting_payment)
-                                        AND reward_id = rewards.id
-                                    ) < maximum_contributions)") }
+  scope :remaining, -> {
+    where("
+             rewards.maximum_contributions IS NULL
+             OR (
+              rewards.maximum_contributions IS NOT NULL
+              AND (
+                    SELECT
+                    COUNT(distinct c.id)
+                    FROM
+                      contributions c JOIN payments p ON p.contribution_id = c.id
+                    WHERE
+                      (p.state = 'paid' OR
+                      p.waiting_payment)
+                      AND reward_id = rewards.id
+                  ) < maximum_contributions)")
+  }
   scope :sort_asc, -> { order('id ASC') }
 
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
@@ -40,7 +45,7 @@ class Reward < ActiveRecord::Base
   after_save :expires_project_cache
 
   def log_changes
-    self.last_changes = self.changes.to_json
+    self.last_changes = changes.to_json
   end
 
   def to_s
@@ -52,7 +57,7 @@ class Reward < ActiveRecord::Base
   end
 
   def sold_out?
-    #maximum_contributions && total_compromised >= maximum_contributions
+    # maximum_contributions && total_compromised >= maximum_contributions
     pluck_from_database('sold_out')
   end
 
@@ -60,8 +65,8 @@ class Reward < ActiveRecord::Base
     total_compromised > 0
   end
 
-  def total_contributions states = %w(paid pending)
-    payments.with_states(states).count("DISTINCT contributions.id")
+  def total_contributions(states = %w[paid pending])
+    payments.with_states(states).count('DISTINCT contributions.id')
   end
 
   def total_compromised
@@ -84,7 +89,7 @@ class Reward < ActiveRecord::Base
   def check_if_is_destroyable
     if any_sold?
       project.errors.add 'reward.destroy', "can't destroy"
-      return false
+      false
     end
   end
 
@@ -93,7 +98,8 @@ class Reward < ActiveRecord::Base
   end
 
   private
-  def pluck_from_database attribute
-    Reward.where(id: self.id).pluck("rewards.#{attribute}").first
+
+  def pluck_from_database(attribute)
+    Reward.where(id: id).pluck("rewards.#{attribute}").first
   end
 end
