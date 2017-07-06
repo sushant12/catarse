@@ -39,15 +39,9 @@ module Catarse
     # Default encoding for the server
     config.encoding = 'utf-8'
 
-<<<<<<< HEAD
     config.filter_parameters += [:password, :password_confirmation]
     config.time_zone = 'Kathmandu'
     config.active_record.default_timezone = :local
-=======
-    config.filter_parameters += %i[password password_confirmation]
-    config.time_zone = 'Brasilia'
-    config.active_record.default_timezone = :utc
->>>>>>> upstream/master
     config.generators do |g|
       g.test_framework :rspec, fixture: false, views: false
     end
