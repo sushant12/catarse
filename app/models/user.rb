@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
-  validates :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
+  # validates :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
+  validates :name, :phone_number, :country_id, :address_city, :address_street, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
   validates :birth_date, presence: true, if: ->(user) { user.publishing_user_settings && user.account_type == 'pf' }
 
   validates_presence_of :email

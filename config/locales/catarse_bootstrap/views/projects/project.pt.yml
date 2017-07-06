@@ -201,7 +201,7 @@ pt:
               question: If this campaign is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
         flex:
-          description: The campaign will get all the money when it finishes.
+          description: The campaign will get receive all the money after deadline.
           questions:
             1:
               question: How do I back this campaign?

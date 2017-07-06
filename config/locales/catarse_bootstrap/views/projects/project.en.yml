@@ -188,7 +188,7 @@ en:
           questions:
             1:
               question: How do I back this campaign?
-              answer: Fill the contact details, address and your credit card details and click on Finish payment. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+              answer: Fill the contact details. If everything is right, you will be redirected to a 'Thank you' page.
             2:
               question: When is my card charged?
               answer: The confirmation of your payment should be sent to your email on the same day.
@@ -197,16 +197,16 @@ en:
               answer: This campaign will be added to you Backed campaign history on your public profile. The selected reward and the contribution amount won't be public.
             4:
               question: What if the campaign can't reach its goal?
-              answer: You will have your payment 100% refunded to your credit card.
+              answer: You will have your payment 100% refunded.
             5:
               question: If this campaign is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
         flex:
-          description: The campaign will get all the money when it finishes.
+          description: The campaign will receive all the money after deadline
           questions:
             1:
               question: How do I back this campaign?
-              answer: Fill the contact details, address and your credit card details and click on Finish payment. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+              answer: Fill the contact details. If everything is right, you will be redirected to a 'Thank you' page.
             2:
               question: When is my card charged?
               answer: The confirmation of your payment should be sent to your email on the same day.
@@ -214,7 +214,7 @@ en:
               question: What can others see about my contribution?
               answer: This campaign will be added to you Backed campaign history on your public profile. The selected reward and the contribution amount won't be public.
             4:
-              question: Who is the responsible for this campaign?
+              question: Who is responsible for this campaign?
               answer: Grasruts is just a link between you and the creator. If you want to know more about the campaign, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
             5:
               question: If this campaign is funded, how do I get my reward?
