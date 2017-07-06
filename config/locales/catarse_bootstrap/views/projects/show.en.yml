@@ -99,14 +99,14 @@ en:
       submit: Support this campaign
       display_status:
         approved: "This campaign has already been approved by Grasruts. Soon he will be on the air and ready to receive support."
-        online: "You can support this campaign until %{date} till 23h59m59s"
+        online: "You can support this campaign until %{date}"
         failed: "This campaign did not reach the minimum of %{goal} through %{date} and was not funded"
         rejected: "This campaign was not accepted. Can not support."
         in_analysis: "This campaign is under review and is not yet open for support."
         successful: "This campaign was successful and was funded on %{date}"
         waiting_funds: "The deadline for capturing this campaign is closed. We are awaiting confirmation of the latest payments."
         draft: "This campaign is only a draft and still can not receive support."
-      submit: Support this campaign
+      submit: Support
     project_main:
       post_call: 'All news published in Grasruts is sent directly to the email of who has already supported his campaign and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
       send_post: 'Writing novelty'
