@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Categories::SubscriptionsController < ApplicationController
   respond_to :html
   before_filter :authenticate_user!
