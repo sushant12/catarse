@@ -93,15 +93,15 @@ gem 'sitemap_generator'
 
 gem 'rdstation-ruby-client'
 gem 'responders', '~> 2.0'
-# gem "cpf_cnpj"
+gem 'cpf_cnpj'
 gem 'aws-sdk', '~> 2'
 
 # Translations
 gem 'http_accept_language'
 gem 'routing-filter', '~> 0.6.0'
-gem 'puma_worker_killer'
+# gem 'puma_worker_killer'
 group :production do
-  gem 'scout_apm'
+  # gem 'scout_apm'
   # Gem used to handle image uploading
   gem 'fog-aws'
   # Use Puma as the app server
