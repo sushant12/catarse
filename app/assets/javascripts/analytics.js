@@ -111,7 +111,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
         //Just get the last ref. Do not update utms...
         o.ref = (request.query&&request.query.ref) || o.ref; //Preference for query.
       } else if(/*!fromCatarse && */ request.referrer || (!o._time || new Date().getTime()-o._time>10*60*1000/*10min*/)) {
-        var m=request.referrer && request.referrer.match(/https?:\/\/([^\/\?#]+)/);
+        var m=request.referrer && request.referrer.match(/http?:\/\/([^\/\?#]+)/);
         var refDomain=(m && m[1]) || undefined;
         var query=request.query;
         //If and only if it has some utm in the query...
