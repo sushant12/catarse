@@ -11,18 +11,18 @@ en:
           link: 'https://medium.com/grasruts/how-can-crowdfunding-help-you-8e06f1ed9bc3'
           cta: ' Learn How '
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
-#        2:
-#          title: '2016'
-#          subtitle: 'Conheça nossa perspectiva sobre como foi o ano no Grasruts.'
-#          link: 'http://ano.grasruts.me/2016?ref=home_banner'
-#          cta: 'Saiba mais'
-#          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-2016.jpg'
-#        3:
-#          title: 'Ana: renascendo com a Ayurveda'
-#          subtitle: 'Nem todo conhecimento é científico! E toda saúde é bem-vida, conheça a Ayurveda e a Ana. Colabore!'
-#          link: 'https://www.grasruts.me/AnaRenascendoComAyurveda?ref=home_banner'
-#          cta: 'Conheça o projeto'
-#          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-AnaRenascendoComAyurveda.jpg'
+        2:
+          title: 'Is Grasruts legal in Nepal?'
+          subtitle: ''
+          link: 'https://grasruts.zendesk.com/hc/en-us/articles/115000534653-Is-Grasruts-a-legal-crowdfunding-platform-'
+          cta: 'Read More..'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
+        3:
+          title: 'What is crowdfunding?'
+          subtitle: 'Listen to this podcast where we talk about crowdfunding and its benefits'
+          link: 'https://www.facebook.com/whynotbrainstorm/videos/341274306290832/'
+          cta: 'Listen Now'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
 #        4:
 #          title: 'SOS cannabis medicinal'
 #          subtitle: 'Precisamos ajudar o laboratório da UFRJ a dosar os extratos à base de maconha.'
