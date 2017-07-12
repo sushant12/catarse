@@ -155,6 +155,7 @@ Catarse::Application.routes.draw do
   get '/projects_dashboard' => 'high_voltage/pages#show', id: 'projects_dashboard'
   get '/how-it-works' => 'high_voltage/pages#show', id: 'how_it_works'
   get '/rules' => 'high_voltage/pages#show', id: 'rules'
+  get '/support' => 'high_voltage/pages#show', id: 'support'
 
 
   # Root path should be after channel constraints
