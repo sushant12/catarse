@@ -12,6 +12,59 @@ namespace :cron do
                  verify_pagarme_transfers verify_pagarme_user_transfers notify_pending_refunds request_direct_refund_for_failed_refund notify_expiring_rewards
                  update_fb_users]
 
+  desc "Refresh all materialized views"
+  task refresh_materialized_views: :environment do
+    puts "refreshing views"
+    Statistics.refresh_view
+    UserTotal.refresh_view
+    CategoryTotal.refresh_view
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  "1".successful_projects') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  "1".finished_projects') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  public.moments_project_start') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  public.moments_project_start_inferuser') rescue nil
+
+    #stats
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.control_panel') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.int_payments_2016') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.financeiro_control_panel_simplificado') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.financeiro_int_payments_2016_simplificado') rescue nil
+    #stats aarrr
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.project_points') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.aarrr_realizador_draft_projetos') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.aarrr_realizador_online_projetos') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft_by_category') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online_by_category') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online') rescue nil
+    #stats growth
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.growth_project_tags_weekly_contribs_mat') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.growth_project_views') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.growth_contributions') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.growth_contributions_confirmed') rescue nil
+    ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW  stats.growth_analise_tipo') rescue nil
+
+  end
+
   desc 'Request refund for failed credit card refunds'
   task request_direct_refund_for_failed_refund: :environment do
     ContributionDetail.where("state in ('pending', 'paid') and project_state = 'failed' and lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").each do |c|

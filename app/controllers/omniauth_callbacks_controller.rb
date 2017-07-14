@@ -12,7 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           if omniauth[:info][:email]
             @auth = Authorization.create_from_hash(omniauth, user)
           else
-            flash[:alert] = I18n.t('devise.omniauth_callbacks.failure', kind: p.name.capitalize, reason: 'email não foi informado')
+            flash[:alert] = I18n.t('devise.omniauth_callbacks.failure', kind: p.name.capitalize, reason: 'Email was not found')
             return redirect_to sign_up_path
           end
         end
