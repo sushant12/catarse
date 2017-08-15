@@ -732,7 +732,7 @@ DEPENDENCIES
   postgres_ext
   protected_attributes
   pry
-  puma (= 3.8.1)
+  puma (~> 3.0)
   pundit
   rails (~> 4.2.8)
   rails-erd

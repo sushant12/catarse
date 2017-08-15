@@ -105,7 +105,7 @@ group :production do
   # Gem used to handle image uploading
   gem 'fog-aws'
   # Use Puma as the app server
-  gem 'puma', '3.8.1'
+  gem 'puma', '~> 3.0'
   # Workers, forks and all that jazz
   # gem 'unicorn'
 
