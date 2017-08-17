@@ -1,0 +1,9 @@
+<form action="https://gateway.sandbox.npay.com.np/pay.aspx" method="post" name="sendForm">
+  Process ID: <input type="text" value="<%= @process_id%>" name="processID" /> <br />
+  Merchant ID: <input type="text" value="169" name="MerchantID" /> <br />
+  Transaction ID: <input type="text" value="12" name="MerchantTxnID" /> <br />
+  Amount: <input type="text" value="200" name="PayAmount" /> <br />
+  Merchant Username: <input type="text" value="grasruts_uat" name="MerchantUsername" /> <br />
+  Description: <input type="text" value="tesing" name="Description" /> <br />
+  <input type="submit" value="POST DATA" name="posting" />
+</form>

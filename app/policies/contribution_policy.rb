@@ -57,6 +57,10 @@ class ContributionPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def sct_n_pay?
+    done_by_owner_or_admin?
+  end
+
   def permitted_attributes
     record.attribute_names.map(&:to_sym) - %i[user_attributes user_id user payment_service_fee payment_id]
   end

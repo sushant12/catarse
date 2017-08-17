@@ -93,6 +93,7 @@ Catarse::Application.routes.draw do
         get :second_slip
         get :receipt
         get :no_account_refund
+        get :sct_n_pay
       end
       put :credits_checkout, on: :member
     end
