@@ -8,7 +8,7 @@ class SctController < ApplicationController
     password = Digest::SHA256.hexdigest(merchant_username+merchant_password)
     sign = Digest::SHA256.hexdigest(signature_passcode+merchant_username+transaction_id)
     client = Savon.client(wsdl: 'https://gateway.sandbox.npay.com.np/websrv/Service.asmx?wsdl')
-    params = {
+    @params = {
         "MerchantId" => 169,
         "MerchantTxnId" => transaction_id,
         "MerchantUserName" => merchant_username,
@@ -17,7 +17,7 @@ class SctController < ApplicationController
         "AMOUNT" => session[:value],
         "purchaseDescription" => "Contributed to #{session[:project_name]} by #{current_user.name} -- #{current_user.email}"
     }
-    response = client.call(:validate_merchant, message: params)
+    response = client.call(:validate_merchant, message: @params)
     @process_id = response.body[:validate_merchant_response][:validate_merchant_result][:processid]
   end
 end
