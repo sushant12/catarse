@@ -18,7 +18,6 @@ class SctController < ApplicationController
         "purchaseDescription" => "Contributed to #{session[:project_name]} by #{current_user.name} -- #{current_user.email}"
     }
     response = client.call(:validate_merchant, message: params)
-    puts response.body
     @process_id = response.body[:validate_merchant_response][:validate_merchant_result][:processid]
   end
 end

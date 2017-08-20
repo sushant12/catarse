@@ -24,10 +24,6 @@ class Projects::ContributionsController < ApplicationController
     authorize resource
     resource.update_attributes(permitted_params)
     resource.update_user_billing_info
-    session[:contribution_id] = resource.id
-    session[:project_id] = resource.project_id
-    session[:value] = resource.value
-    session[:project_name] = resource.project.name
     render json: { message: 'updated' }
   end
 
@@ -68,6 +64,10 @@ class Projects::ContributionsController < ApplicationController
       success.html do
         flash[:notice] = nil
         session[:thank_you_contribution_id] = @contribution.id
+        session[:contribution_id] = @contribution.id
+        session[:project_id] = @contribution.project_id
+        session[:value] = @contribution.value
+        session[:project_name] = @contribution.project.name
         return redirect_to edit_project_contribution_path(project_id: @project.id, id: @contribution.id)
       end
     end
