@@ -22,12 +22,12 @@ class Projects::ContributionsController < ApplicationController
 
   def update
     authorize resource
+    resource.update_attributes(permitted_params)
+    resource.update_user_billing_info
     session[:contribution_id] = resource.id
     session[:project_id] = resource.project_id
     session[:value] = resource.value
     session[:project_name] = resource.project.name
-    resource.update_attributes(permitted_params)
-    resource.update_user_billing_info
     render json: { message: 'updated' }
   end
 
