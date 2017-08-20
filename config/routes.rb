@@ -76,6 +76,7 @@ Catarse::Application.routes.draw do
       get :finish
     end
   end
+  get :sct_n_pay, to: 'sct#index'
   resources :projects, only: %i[create update edit new show] do
     resources :accounts, only: %i[create update]
     resources :posts, controller: 'projects/posts', only: %i[destroy show create]
@@ -93,7 +94,6 @@ Catarse::Application.routes.draw do
         get :second_slip
         get :receipt
         get :no_account_refund
-        get :sct_n_pay
       end
       put :credits_checkout, on: :member
     end
