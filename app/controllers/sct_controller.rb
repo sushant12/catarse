@@ -20,4 +20,8 @@ class SctController < ApplicationController
     response = client.call(:validate_merchant, message: @params)
     @process_id = response.body[:validate_merchant_response][:validate_merchant_result][:processid]
   end
+
+  def thanks
+    redirect_to project_contribution_url(session[:project_id],session[:contribution_id])
+  end
 end

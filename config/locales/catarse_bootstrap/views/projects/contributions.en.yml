@@ -262,8 +262,8 @@ en:
         thank_you: 'I`m counting on your support....'
         thank_you_text_html:  "<div class='fontsize-base'>You also received this ticket in the email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
       thank_you:
-        thank_you: 'Thanks! Your support is being processed.'
-        thank_you_text_html:  "<div class='fontsize-base'>Once the payment is completed, we will send the confirmation of your support to the registered email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
+        thank_you: 'Thanks! Your support will make a dream come true.'
+        thank_you_text_html:  "<div class='fontsize-base'>You contributed form your registered email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
         share: Share
         tweet: Tweet
         share_back: 'Share with your friends and help this campaign hit the goal!'

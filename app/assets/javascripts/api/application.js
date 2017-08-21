@@ -157,6 +157,7 @@
           '/en/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/en/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
+          '/thanks': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           // '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/en/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
