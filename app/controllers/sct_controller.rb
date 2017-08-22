@@ -41,7 +41,7 @@ class SctController < ApplicationController
         "GTWREFNO" => ref_no
     }
     response = client.call(:check_transaction_status, message: @params)
-    if response.body[:check_transaction_status_response][:check_transaction_status_result][:status_code] == 0
+    if response.body[:check_transaction_status_response][:check_transaction_status_result][:status_code] == '0'
       p = Payment.new
       p.contribution_id = session[:contribution_id]
       p.state = 'paid'
