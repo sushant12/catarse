@@ -40,8 +40,21 @@ class SctController < ApplicationController
         "Signature" => sign,
         "GTWREFNO" => ref_no
     }
-    @response = client.call(:CheckTransactionStatus, message: @params)
-    # @process_id = response.body[:validate_merchant_response][:validate_merchant_result][:processid]
-    # redirect_to project_contribution_url(session[:project_id],session[:contribution_id])
+    response = client.call(:check_transaction_status, message: @params)
+    if response.body[:check_transaction_status_response][:check_transaction_status_result][:status_code] == 0
+      p = Payment.new
+      p.contribution_id = session[:contribution_id]
+      p.state = 'paid'
+      p.key = response.body[:check_transaction_status_response][:check_transaction_status_result][:merchant_transactionid]
+      p.gateway = 'npay'
+      p.payment_method = 'npay'
+      p.value = response.body[:check_transaction_status_response][:check_transaction_status_result][:amount]
+      p.gtwrefno = response.body[:check_transaction_status_response][:check_transaction_status_result][:gtwrefno]
+      p.description = response.body[:check_transaction_status_response][:check_transaction_status_result][:merchant_decs]
+      p.concerned_bank = response.body[:check_transaction_status_response][:check_transaction_status_result][:concerned_bank]
+      p.gateway_data = response.body[:check_transaction_status_response][:check_transaction_status_result].to_json
+      p.save!
+    end
+    redirect_to project_contribution_url(session[:project_id],session[:contribution_id])
   end
 end
