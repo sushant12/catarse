@@ -78,6 +78,7 @@ Catarse::Application.routes.draw do
   end
   get :contribute, to: 'sct#index'
   get :thanks, to: 'sct#thanks'
+  get :sct_delivery, to: 'sct#delivery'
   resources :projects, only: %i[create update edit new show] do
     resources :accounts, only: %i[create update]
     resources :posts, controller: 'projects/posts', only: %i[destroy show create]

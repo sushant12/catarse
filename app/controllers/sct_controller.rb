@@ -57,4 +57,8 @@ class SctController < ApplicationController
     end
     redirect_to project_contribution_url(session[:project_id],session[:contribution_id])
   end
+
+  def delivery
+    render plain: '0'
+  end
 end
