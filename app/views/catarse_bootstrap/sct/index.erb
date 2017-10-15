@@ -1,13 +1,14 @@
-<% content_for :title, 'Support' %>
-<%= render 'shared/header_big' %>
 <form action="https://gateway.sandbox.npay.com.np/pay.aspx" method="post" name="sendForm">
-  <input type="text" value="<%= @process_id%>" name="ProcessID" hidden/> <br />
-  <input type="text" value="169" name="MerchantID" hidden/> <br />
-  <input type="text" value=<%= @params['MerchantTxnId']%> name="MerchantTxnID" hidden/> <br />
-  <input type="text" value="<%= @params['AMOUNT'] %>" name="PayAmount" hidden/> <br />
-  <input type="text" value="grasruts_uat" name="MerchantUsername" hidden/> <br />
-  <input type="text" value="<%= @params['purchaseDescription'] %>" name="Description" hidden/> <br />
-  <input type="submit" value="Pay with SCT" name="posting" />
+<input type="text" value="<%= @process_id%>" name="ProcessID" hidden/> <br />
+<input type="text" value="169" name="MerchantID" hidden/> <br />
+<input type="text" value="<%= @params['MerchantTxnId']%>" name="MerchantTxnID" hidden/> <br />
+<input type="text" value="<%= @params['AMOUNT'] %>" name="PayAmount" hidden/> <br />
+<input type="text" value="grasruts_uat" name="MerchantUsername" hidden/> <br />
+<input type="text" value="<%= @params['purchaseDescription'] %>" name="Description" hidden/> <br />
+<input type="submit" value="Pay with SCT" name="posting" id="sct-hidden-form" />
 </form>
 
-<%= render 'shared/footer_big' %>
+<script>
+var form_id = document.getElementById('sct-hidden-form');
+form_id.click();
+</script>
