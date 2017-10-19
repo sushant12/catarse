@@ -31,6 +31,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def payment_redirect
+    @contribution_value = Contribution.find(params[:id])['value']
     if params[:type] == 'sct'
       @process_id = sct_init
       render 'sct/index'
@@ -186,7 +187,7 @@ class Projects::ContributionsController < ApplicationController
         "MerchantUserName" => merchant_username,
         "MerchantPassword" => password,
         "Signature" => sign,
-        "AMOUNT" => session[:value],
+        "AMOUNT" => @contribution_value,
         "purchaseDescription" => "Contributed to #{parent.name} by #{current_user.name} -- #{current_user.email}"
     }
     response = client.call(:validate_merchant, message: @params)
