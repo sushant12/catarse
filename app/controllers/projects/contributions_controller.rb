@@ -33,9 +33,10 @@ class Projects::ContributionsController < ApplicationController
   def payment_redirect
     if params[:type] == 'sct'
       @process_id = sct_init
-      binding.pry
       render 'sct/index'
     elsif params[:type] == 'esewa'
+      @process_id = Time.now.to_i.to_s
+      render 'esewa/index'
     elsif params[:type] == 'card'
     else
       raise 'Unrecognised Payment Processor '
@@ -186,9 +187,14 @@ class Projects::ContributionsController < ApplicationController
         "MerchantPassword" => password,
         "Signature" => sign,
         "AMOUNT" => session[:value],
-        "purchaseDescription" => "Contributed to #{session[:project_name]} by #{current_user.name} -- #{current_user.email}"
+        "purchaseDescription" => "Contributed to #{parent.name} by #{current_user.name} -- #{current_user.email}"
     }
     response = client.call(:validate_merchant, message: @params)
     response.body[:validate_merchant_response][:validate_merchant_result][:processid]
   end
+
+  # def esewa_init
+  #   @process_id = Time.now.to_i.to_s
+  #
+  # end
 end

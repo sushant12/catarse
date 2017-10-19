@@ -78,7 +78,9 @@ Catarse::Application.routes.draw do
   end
   get :contribute, to: 'sct#index'
   get :thanks, to: 'sct#thanks'
+  post :ipay_thanks, to: 'sct#ipay'
   get :sct_delivery, to: 'sct#delivery'
+  post :pickup, to: 'sct#pickup'
   resources :projects, only: %i[create update edit new show] do
     resources :accounts, only: %i[create update]
     resources :posts, controller: 'projects/posts', only: %i[destroy show create]
@@ -96,6 +98,8 @@ Catarse::Application.routes.draw do
         get :second_slip
         get :receipt
         get :no_account_refund
+        get :payment_method
+        get 'payment_method/:type', to: 'projects/contributions#payment_redirect', as: 'payment_redirect'
       end
       put :credits_checkout, on: :member
     end
