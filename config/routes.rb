@@ -32,7 +32,6 @@ Catarse::Application.routes.draw do
   get '/user_contributions' => 'application#redirect_to_user_contributions'
   post '/subscribe_newsletter' => 'application#subscribe_newsletter'
 
-  get '/thank_you' => 'static#thank_you'
   get '/follow-fb-friends' => 'users#follow_fb_friends', as: :follow_fb_friends
   get '/connect-facebook' => 'application#connect_facebook', as: :connect_fb
 
@@ -78,6 +77,7 @@ Catarse::Application.routes.draw do
   end
   get :contribute, to: 'sct#index'
   get :thanks, to: 'sct#thanks'
+  get '/esewa/success', to: 'esewa#success'
   post :ipay_thanks, to: 'sct#ipay'
   get :sct_delivery, to: 'sct#delivery'
   post :pickup, to: 'sct#pickup'

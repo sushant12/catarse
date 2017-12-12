@@ -13,24 +13,23 @@
       <font><font>Pay with</font></font>
     </div>
     <div class="items payment-methods">
+      <% if @contribution_value > 499 %>
       <div class="payment-method">
         <div class="payment-method-title field choice">
           <label class="label" for="nabil">
-            <span>Pay by Card</span>
+            <span>Cash Pickup</span>
           </label>
-          <br>
-          <img src="https://www.olizstore.com/pub/media/pg/visa-mastercard-unionpay.png" style="margin-left:8px;margin-top:3px">
         </div>
-
         <div class="payment-method-content">
           <div class="actions-toolbar">
             <div class="primary w-col-3">
-              <a href="<%= payment_redirect_project_contribution_path params[:project_id], params[:id], 'card'%>" class="btn btn-medium">Support Campaign</a>
+              <a href="<%= payment_redirect_project_contribution_path params[:project_id], params[:id], 'card'%>" class="btn btn-medium">Cash Pickup</a>
             </div>
           </div>
         </div>
       </div>
       <hr>
+      <% end %>
       <!-- /ko --><!-- ko template: getTemplate() -->
       <div class="payment-method">
         <div class="payment-method-title field choice">
@@ -64,6 +63,21 @@
           <div class="actions-toolbar">
             <div class="primary w-col-3 ">
               <a href="<%= payment_redirect_project_contribution_path params[:project_id], params[:id], 'sct'%>" class="btn btn-medium">Continue To Sctnpay</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="payment-method">
+        <div class="payment-method-title field choice">
+          <label class="label" for="sctnpay">
+            <span>Bank Deposit</span>
+          </label>
+        </div>
+        <div class="payment-method-content">
+          <div class="actions-toolbar">
+            <div class="primary w-col-3 ">
+              <a href="<%= payment_redirect_project_contribution_path params[:project_id], params[:id], 'bank'%>" class="btn btn-medium">Bank Deposit</a>
             </div>
           </div>
         </div>

@@ -1,0 +1,13 @@
+<% content_for :title, 'Support' %>
+<%= render 'shared/header_big' %>
+<form name="MyForm" method="POST" action="https://www.ipay.com.np/Payment/VerifyTransaction" >
+  <input name="MerchantId" type="hidden" value="939a8cc6-cda2-47f7-a25a-a1ccf0f45721">
+  <input name="TransactionId" type="hidden" value="<%= @transaction_id %>">
+  <input name="Confirmation_Code" type="hidden" value="<%= @confirmation_code%>">
+  <input name="ReturnUrl" type="hidden" value=" http://localhost:3000/ipay_thanks?success">
+  <input name="ErrorUrl" type="hidden" value=" http://www.merchant site.com.np/igate.php?cancel">
+  <input name="Amount" type="hidden" value="<%= @amount %>">
+<input name="SessionKey" type="hidden" value="<%= @session_key %>">
+  <input type="submit" value="Pay with Ipay" name="posting" />
+</form>
+<%= render 'shared/footer_big' %>

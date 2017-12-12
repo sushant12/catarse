@@ -28,6 +28,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def payment_method
+    @contribution_value = Contribution.find(params[:id])['value']
   end
 
   def payment_redirect
@@ -36,9 +37,10 @@ class Projects::ContributionsController < ApplicationController
       @process_id = sct_init
       render 'sct/index'
     elsif params[:type] == 'esewa'
-      @process_id = Time.now.to_i.to_s
+      esewa_init
       render 'esewa/index'
-    elsif params[:type] == 'card'
+    elsif params[:type] == 'bank'
+      render 'bank/index'
     else
       raise 'Unrecognised Payment Processor '
     end
@@ -195,8 +197,15 @@ class Projects::ContributionsController < ApplicationController
     response.body[:validate_merchant_response][:validate_merchant_result][:processid]
   end
 
-  # def esewa_init
-  #   @process_id = Time.now.to_i.to_s
-  #
-  # end
+  def esewa_init
+    @params = {
+        'scd' => 'GRASRUTS',
+        'tAmt' => @contribution_value,
+        'amt' => @contribution_value,
+        'txAmt' => 0,
+        'psc' => 0,
+        'pdc' => 0,
+        'pid' => "#{parent.id}-#{parent.name}-#{SecureRandom.uuid}"
+    }
+  end
 end
