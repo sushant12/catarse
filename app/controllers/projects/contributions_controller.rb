@@ -41,6 +41,8 @@ class Projects::ContributionsController < ApplicationController
       render 'esewa/index'
     elsif params[:type] == 'bank'
       render 'bank/index'
+    elsif params[:type] == 'pickup'
+      render 'pickup/index'
     else
       raise 'Unrecognised Payment Processor '
     end

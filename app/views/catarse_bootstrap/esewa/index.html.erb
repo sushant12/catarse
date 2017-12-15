@@ -1,12 +1,17 @@
 <form action="https://ir-user.esewa.com.np/epay/main" method="POST">
-  <input value="<%= @params['tAmt'] %>" name="tAmt" type="hidden">
-  <input value="<%= @params['amt'] %>" name="amt" type="hidden">
-  <input value="0" name="txAmt" type="hidden">
-  <input value="0" name="psc" type="hidden">
-  <input value="0" name="pdc" type="hidden">
-  <input value="<%= @params['scd'] %>" name="scd" type="hidden">
-  <input value="<%= @params['pid'] %>" name="pid" type=" hidden">
-  <input value="<%= esewa_success_url %>" type="hidden" name="su">
-  <input value="http://www.grasruts.com/?q=failed_transaction" type="hidden" name="fu">
-  <input value="Submit" type="submit">
+  <input value="<%= @params['tAmt'] %>" name="tAmt" type="text" hidden="hidden">
+  <input value="<%= @params['amt'] %>" name="amt" type="text" hidden="hidden">
+  <input value="0" name="txAmt" type="text" hidden="hidden">
+  <input value="0" name="psc" type="text" hidden="hidden">
+  <input value="0" name="pdc" type="text" hidden="hidden">
+  <input value="<%= @params['scd'] %>" name="scd" type="text" hidden="hidden">
+  <input value="<%= @params['pid'] %>" name="pid" type=" text" hidden="hidden">
+  <input value="<%= esewa_success_url %>" type="text" name="su" hidden="hidden">
+  <input value="http://www.grasruts.com/?q=failed_transaction" type="text" name="fu" hidden="hidden">
+  <input value="Submit" id="esewa-hidden-form"  hidden="hidden" type="submit">
 </form>
+
+<script>
+    var form_id = document.getElementById('esewa-hidden-form');
+    form_id.click();
+</script>
