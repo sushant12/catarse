@@ -201,7 +201,7 @@ class Projects::ContributionsController < ApplicationController
 
   def esewa_init
     @params = {
-        'scd' => 'GRASRUTS',
+        'scd' => 'grasruts',
         'tAmt' => @contribution_value,
         'amt' => @contribution_value,
         'txAmt' => 0,

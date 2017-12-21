@@ -4,8 +4,9 @@ class EsewaController < ApplicationController
     amt = params[:amt]
     rid = params[:refId]
     begin
-      uri = URI.parse("https://ir-user.esewa.com.np/epay/transrec")
-      uri.query = URI.encode_www_form({amt: amt, scd: "GRASRUTS", pid: pid, rid: rid})
+      # uri = URI.parse("https://ir-user.esewa.com.np/epay/transrec")
+      uri = URI.parse("https://esewa.com.np/epay/transrec")
+      uri.query = URI.encode_www_form({amt: amt, scd: "grasruts", pid: pid, rid: rid})
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE
