@@ -43,6 +43,8 @@ class Projects::ContributionsController < ApplicationController
       render 'bank/index'
     elsif params[:type] == 'pickup'
       render 'pickup/index'
+    elsif params[:type] == 'others'
+      render 'others/thamel_remit'
     else
       raise 'Unrecognised Payment Processor '
     end
