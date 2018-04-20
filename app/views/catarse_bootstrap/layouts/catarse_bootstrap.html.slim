@@ -52,6 +52,7 @@ html
     = render 'layouts/zendesk_widget'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
+    = javascript_include_tag "https://khalti.com/static/khalti-checkout.js"
     = yield
 
   = javascript_include_tag :analytics

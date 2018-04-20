@@ -5,7 +5,7 @@ class Projects::ContributionsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :update, :review, :create
   skip_before_filter :verify_authenticity_token, only: [:moip]
-  after_filter :verify_authorized, except: [:index, :payment_method,:payment_redirect]
+  after_filter :verify_authorized, except: [:index, :payment_method,:payment_redirect, :khalti_verification]
   belongs_to :project
   before_filter :detect_old_browsers, only: %i[new create]
 
@@ -29,6 +29,7 @@ class Projects::ContributionsController < ApplicationController
 
   def payment_method
     @contribution_value = Contribution.find(params[:id])['value']
+    @project = Project.find params[:project_id]
   end
 
   def payment_redirect
@@ -47,6 +48,43 @@ class Projects::ContributionsController < ApplicationController
       render 'others/thamel_remit'
     else
       raise 'Unrecognised Payment Processor '
+    end
+  end
+
+  def khalti_verification
+    headers = {
+        Authorization: "Key #{CatarseSettings[:khalti_secret_key]}"
+    }
+    uri = URI.parse('https://khalti.com/api/payment/verify/')
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Post.new(uri.request_uri, headers)
+    request.set_form_data('token' => params[:token], 'amount' => params[:amount])
+    response = https.request(request)
+    if JSON.parse(response.body)['idx'].present?
+      uri = URI.parse("https://khalti.com/api/merchant-transaction/#{JSON.parse(response.body)['idx']}/")
+      request = Net::HTTP::Get.new(uri)
+      request["Authorization"] = "Key #{CatarseSettings[:khalti_secret_key]}"
+
+      req_options = {
+          use_ssl: uri.scheme == "https",
+      }
+
+      res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+        http.request(request)
+      end
+      p = Payment.new
+      p.contribution_id = params[:contribution_id]
+      p.state = 'paid'
+      p.key = JSON.parse(response.body)['idx']
+      p.gateway = 'khalti'
+      p.payment_method = 'khalti'
+      p.value = JSON.parse(res.body)['amount']/100
+      p.gateway_data = res.body
+      p.save!
+      render json: JSON.parse(response.body)
+    else
+      render json: response
     end
   end
 

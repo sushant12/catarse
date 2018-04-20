@@ -101,6 +101,7 @@ Catarse::Application.routes.draw do
         get :payment_method
         get 'payment_method/:type', to: 'projects/contributions#payment_redirect', as: 'payment_redirect'
       end
+      post 'khalti/verification', to: 'projects/contributions#khalti_verification', as: 'khalti_verification'
       put :credits_checkout, on: :member
     end
 

@@ -49,6 +49,21 @@
         </div>
       </div>
       <hr>
+      <div class="payment-method">
+        <div class="payment-method-title field choice">
+          <label class="label" for="khalti">
+            <span>Khalti</span>
+          </label>
+        </div>
+        <div class="payment-method-content">
+          <div class="actions-toolbar">
+            <div class="primary w-col-3 ">
+              <a href="<%= payment_redirect_project_contribution_path params[:project_id], params[:id], 'khalti'%>" class="btn btn-medium" id="payment-button">Pay With Khalti</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
       <!-- /ko --><!-- ko template: getTemplate() -->
       <div class="payment-method">
         <div class="payment-method-title field choice">
@@ -105,7 +120,38 @@
 </div>
 
 
+<script>
+    var config = {
+        // replace the publicKey with yours
+        "publicKey": "test_public_key_9db9af22145645dab429f0e30379d4cf",
+        "productIdentity": '<%= "#{@project.id}-#{@project.name}"%>',
+        "productName": '<%= "#{@project.name}"%>',
+        "productUrl": '<%= "http://www.grasruts.com/#{@project.permalink}"%>',
+        "eventHandler": {
+            onSuccess (payload) {
+                // hit merchant api for initiating verfication
+                $.ajax({
+                    type: "POST",
+                    url: '<%= project_contribution_khalti_verification_url params[:project_id], params[:id] %>',
+                    data: payload,
+                    success: function(data){
+                        window.location = '<%= project_contribution_url(params[:project_id],params[:id]) %>';
+                    }
+                });
+            },
+            onError (error) {
+                console(error);
+            }
+        }
+    };
 
+    var checkout = new KhaltiCheckout(config);
+    var btn = document.getElementById("payment-button");
+    btn.onclick = function (e) {
+        e.preventDefault();
+        checkout.show({amount: <%= @contribution_value.to_i * 100 %>});
+    }
+</script>
 
 
 <%= render 'shared/footer_big' %>
