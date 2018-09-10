@@ -1,6 +1,6 @@
-# Grasruts
+# Grasruts (NOTE: This repo for grasruts will be abandoned soon. We are developing our own solution fit for Nepali market)
 
-######A hyper local Nepali crowdfunding platform.
+
 
 Welcome to Grasrtus code repo.Grasrtus is a forked project of a popular crowdfunding project called [Catarse](https://github.com/catarse/catarse). Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
 
